@@ -1,0 +1,15 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.hero {
+    width: 100%;
+
+    .content {
+        aspect-ratio: 500 / 670;
+        width: 100%;
+        background: url('https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/HaiHa-VanTuan/NVN_7331.webp') no-repeat center / cover;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}

@@ -1,0 +1,258 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.rsvp {
+    width: 100%;
+
+    .content {
+        aspect-ratio: 500 / 744;
+        background: url('../../assets/images/rsvp_bg.png') no-repeat center / 90%;
+        width: 100%;
+        font-family: $font-gotham;
+        padding-top: 30%;
+        position: relative;
+
+        .flower {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            max-width: 111px;
+        }
+
+        .header {
+            padding: 5% 18%;
+
+            .title {
+                font-size: 38px;
+                font-weight: 300;
+                font-family: $font-MTDPortrait;
+                color: $title-color;
+                margin-bottom: 10%;
+            }
+
+            .subtext {
+                line-height: 2;
+                text-align: justify;
+                text-align-last: center;
+            }
+
+            hr {
+                border-top: 2px dashed $secondary-color;
+                margin: 8% 0;
+            }
+        }
+
+        .rsvp-form {
+            display: block;
+            padding: 5% 14%;
+
+            .button-group {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 6%;
+
+                .radio-wrapper {
+                    position: relative;
+                }
+
+                .radio-wrapper input[type="radio"] {
+                    position: absolute;
+                    opacity: 0;
+                    cursor: pointer;
+                }
+
+                .radio-label {
+                    display: block;
+                    padding: 4%;
+                    border-radius: 8px;
+                    background: transparent;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    text-transform: uppercase;
+                    text-align: center;
+                    display: flex;
+                    align-items: center;
+                    border: 1px solid $secondary-color;
+                    aspect-ratio: 192 / 42;
+
+                    &:hover {
+                        background: $title-color;
+                    }
+                }
+
+                .radio-wrapper input[type="radio"]:checked+.radio-label {
+                    background: $secondary-color;
+                    color: $text-color;
+                }
+            }
+
+            .form-group {
+                margin-bottom: 3%;
+
+                input[type="text"],
+                input[type="number"],
+                textarea {
+                    font-family: $font-gotham;
+                    width: 100%;
+                    padding: 2% 4%;
+                    border-radius: 8px;
+                    background: transparent;
+                    font-size: 10px;
+                    color: #333;
+                    outline: none;
+                    border: 1px solid $secondary-color;
+                    transition: border-color 0.3s ease;
+                    // text-transform: uppercase;
+                }
+
+                input[type="text"]:focus,
+                input[type="number"]:focus,
+                textarea:focus {
+                    outline: none;
+                }
+
+                textarea {
+                    aspect-ratio: 500 / 100;
+                    resize: vertical;
+                    font-family: inherit;
+                }
+
+                textarea::placeholder {
+                    white-space: pre-line;
+                    /* Cho phép hiển thị xuống dòng trong placeholder */
+                }
+            }
+
+            .form-group.guest-number {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .form-group.dietary {
+                margin: 8% 0 10%;
+
+                p {
+                    margin-bottom: 3%;
+                }
+
+                p.subtitle {
+                    margin-bottom: 3%;
+                }
+            }
+
+            .form-group.other {
+                margin-bottom: 8%;
+            }
+
+            .form-group.guest-info {
+                margin-bottom: 2%;
+
+                .dietary-label {
+                    margin-bottom: 2%;
+                }
+
+                .subtitle {
+                    margin-bottom: 3%;
+                }
+            }
+
+
+            .message {
+                text-align: center;
+                margin: 10% 0 4%;
+
+                p {
+                    margin-bottom: 2%;
+                }
+            }
+
+            .submit-btn {
+                width: 39%;
+                padding: 3% 0;
+                background: $primary-color;
+                color: white;
+                border: none;
+                border-radius: 8px;
+                font-weight: 600;
+                font-size: 9.11px;
+                cursor: pointer;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                transition: background 0.3s ease;
+                margin: 10% 0;
+            }
+
+            .submit-btn:hover {
+                background: $primary-color;
+                opacity: 0.9;
+            }
+
+            .submit-btn:active {
+                transform: scale(0.98);
+            }
+
+        }
+    }
+
+    label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: $font-gotham;
+        margin-bottom: 2%;
+        text-transform: uppercase;
+        font-size: 9.11px;
+    }
+
+    @media (max-width: 500px) {
+        .content {
+            .flower {
+                max-width: calc((111 / 500) * 100vw);
+            }
+
+            .header {
+                .title {
+                    font-size: calc((38 / 500) * 100vw);
+                }
+
+                hr {
+                    border-top: calc((2 / 500) * 100vw) dashed $secondary-color;
+                }
+            }
+
+            .rsvp-form {
+                .button-group {
+                    .radio-label {
+                        border-radius: calc((8 / 500) * 100vw);
+                        border: calc((1 / 500) * 100vw) solid $secondary-color;
+                    }
+                }
+
+                .form-group {
+
+                    input[type="text"],
+                    input[type="number"],
+                    textarea {
+                        font-size: calc((10 / 500) * 100vw);
+                        border-radius: calc((8 / 500) * 100vw);
+                        border: calc((1 / 500) * 100vw) solid $secondary-color;
+                    }
+
+                    textarea {
+                        /* keep aspect-ratio unchanged */
+                    }
+                }
+
+                .submit-btn {
+                    font-size: calc((9.11 / 500) * 100vw);
+                    border-radius: calc((8 / 500) * 100vw);
+                    letter-spacing: calc((1 / 500) * 100vw);
+                }
+            }
+        }
+
+        label {
+            font-size: calc((9.11 / 500) * 100vw);
+        }
+    }
+}

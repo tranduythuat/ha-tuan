@@ -1,0 +1,181 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.end {
+    width: 100%;
+
+    .content {
+        aspect-ratio: 500 / 750;
+        width: 100%;
+        background: url('../../assets/images/end_bg.png') no-repeat center / cover;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        flex-direction: column;
+        padding-top: 10%;
+
+        .text-block {
+            max-width: 338px;
+            width: 100%;
+            aspect-ratio: 338 / 397;
+            background: url('../../assets/images/paper.png') no-repeat center / cover;
+            @include flex-center;
+            flex-direction: column;
+            padding: 10% 8% 0;
+
+            p {
+                line-height: 2;
+                margin-bottom: 10%;
+                margin-left: 4%;
+                text-align: justify;
+                text-align-last: center;
+                color: #4d4b4cff;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .text-block {
+                max-width: calc((338 / 500) * 100vw);
+            }
+        }
+
+        .countdown {
+            width: 100%;
+            @include flex-center;
+            flex-direction: column;
+            margin-top: 5%;
+
+            .divider img {
+                width: 32px;
+                height: auto;
+                margin-bottom: 5%;
+            }
+
+            .title {
+                font-size: 45px;
+                // letter-spacing: 3px;
+                font-family: $font-MTDPortrait;
+                line-height: 1;
+                margin-bottom: 1%;
+                color: $text-color;
+            }
+
+            .sub_text {
+                margin: 5% 0 5%;
+                letter-spacing: 1.4px;
+                font-family: $font-gotham;
+                color: $text-color;
+                font-size: 12px;
+            }
+
+            .countdown-box {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                flex-wrap: wrap;
+                position: relative;
+                z-index: 1;
+                width: 85%;
+                gap: 3%;
+
+                .time-box {
+                    text-align: center;
+                    flex: 1;
+                    background: rgba($secondary-color, 0.5);
+                    border: 1px solid rgba(201, 129, 142);
+                    backdrop-filter: blur(1px);
+                    color: rgb(201, 135, 150);
+                    padding: 2% 0;
+                    border-radius: 10px;
+                    position: relative;
+
+                    .number {
+                        font-size: 32px;
+                        font-weight: 100;
+                        line-height: 1;
+                        transition: transform 0.3s ease, opacity 0.3s ease;
+                        z-index: 1;
+                        position: relative;
+                    }
+
+                    .label {
+                        font-size: 10.5px;
+                        letter-spacing: 1px;
+                        font-weight: 500;
+                        z-index: 1;
+                        position: relative;
+                    }
+
+                    // &::before {
+                    //     content: "";
+                    //     position: absolute;
+                    //     inset: 0;
+                    //     background-color: rgba($secondary-color, 0.55);
+                    //     filter: blur(7px);
+                    //     transform: scale(1.1);
+                    //     z-index: 0;
+                    // }
+                }
+            }
+
+            .invite_text {
+                margin: 25% 0 8%;
+                // font-family: $font-ICIEL-RUKOLA;
+                font-size: 24px;
+                line-height: 1;
+                letter-spacing: 2px;
+                // img {
+                //     max-width: 286px;
+                // }
+            }
+
+            .cake_img {
+                img {
+                    max-width: 78px;
+                }
+            }
+
+            @media (max-width: 500px) {
+
+                .divider img {
+                    width: calc((32 / 500) * 100vw);
+                }
+
+                .title {
+                    font-size: calc((45 / 500) * 100vw);
+                    // letter-spacing: calc((3 / 500) * 100vw);
+                }
+
+                .sub_text {
+                    font-size: calc((12 / 500) * 100vw);
+                    // letter-spacing: calc((1.4 / 500) * 100vw);
+                }
+
+                .countdown-box {
+                    .time-box {
+                        .number {
+                            font-size: calc((32 / 500) * 100vw);
+                        }
+
+                        .label {
+                            font-size: calc((10.5 / 500) * 100vw);
+                            letter-spacing: calc((1 / 500) * 100vw);
+                        }
+                    }
+
+                }
+
+                .invite_text {
+                    font-size: calc((24 / 500) * 100vw);
+                    letter-spacing: calc((2 / 500) * 100vw);
+                }
+
+                .cake_img {
+                    img {
+                        max-width: calc((78 / 500) * 100vw);
+                    }
+                }
+            }
+        }
+    }
+}

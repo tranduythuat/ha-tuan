@@ -1,0 +1,1120 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "SVN-GothamBold";
+  src: url("../../assets/fonts/SVN-GothamBold.woff2") format("woff2"), url("../fonts/SVN-GothamBold.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SVN-GothamLight";
+  src: url("../../assets/fonts/SVN-Gotham Light.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SVN-GothamBook";
+  src: url("../../assets/fonts/SVN-GothamBook.woff2") format("woff2"), url("../fonts/SVN-GothamBook.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Hikary";
+  src: url("../../assets/fonts/1FTV-Eastin-Hikary.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "MTDPortrait";
+  src: url("../../assets/fonts/MTD-Portrait-Script-Bounce.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: rgb(255, 255, 255);
+  font-size: 12px;
+  margin: 0;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+img {
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+}
+
+section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  scroll-margin-top: 100px;
+}
+
+.container {
+  background: url("../../assets/images/base_bg.png") repeat top/contain;
+  max-width: 500px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.281);
+  color: rgb(9, 33, 2);
+  font-family: "SVN-GothamBook", sans-serif;
+  font-size: 9.11px;
+  display: none;
+  opacity: 0;
+}
+
+/* music */
+.music-box {
+  display: flex;
+  position: fixed;
+  bottom: 10px;
+  right: 1%;
+  cursor: pointer;
+  z-index: 9999;
+}
+.music-box .label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transform-origin: right center;
+  position: absolute;
+  right: 30%;
+  max-width: 300px;
+  width: 190%;
+  height: 100%;
+  overflow: hidden;
+}
+.music-box .label .musicLabel {
+  width: 100%;
+  text-align: left;
+  font-size: 12px;
+  background-color: #8db6be;
+  color: #fff;
+  padding: 3% 12%;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border: 1px solid rgba(48, 44, 42, 0.124);
+  opacity: 0.9;
+}
+.music-box .player {
+  max-width: 55px;
+  width: 105%;
+  aspect-ratio: 1;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.player #iconSvg {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 500px) {
+  .container {
+    font-size: 1.822vw;
+  }
+  .music-box {
+    bottom: 2vw;
+  }
+  .music-box .label {
+    max-width: 60vw;
+  }
+  .music-box .label .musicLabel {
+    font-size: 2.4vw;
+  }
+  .music-box .player {
+    max-width: 11vw;
+  }
+}
+.spin {
+  animation: spin 4s linear infinite;
+}
+
+/* Định nghĩa hoạt ảnh xoay */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.image-wrapper {
+  perspective: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 100px 0;
+}
+.image-wrapper img {
+  width: 320px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+[data-animate=flip], [data-animate=flip-yoyo] {
+  transform-origin: left center;
+  transform: rotateY(-120deg) scale(0.9);
+  opacity: 0;
+  filter: brightness(0.6);
+  backface-visibility: hidden;
+  transition: none;
+}
+
+[data-animate=flip].active, [data-animate=flip-yoyo].active {
+  opacity: 1;
+  transform: rotateY(0deg);
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  top: 100px;
+  border-radius: 12px;
+}
+
+.red {
+  background: #e74c3c;
+}
+
+.blue {
+  background: #3498db;
+}
+
+.green {
+  background: #2ecc71;
+}
+
+.shake-text {
+  animation: shakeWithPause 3s ease-in-out infinite;
+}
+
+@keyframes shakeWithPause {
+  /* Rung lắc nhẹ - kéo dài hơn */
+  0%, 100% {
+    transform: translateX(0);
+  }
+  3% {
+    transform: translateX(-3px) rotate(-1deg);
+  }
+  6% {
+    transform: translateX(3px) rotate(1deg);
+  }
+  9% {
+    transform: translateX(-3px) rotate(-1deg);
+  }
+  12% {
+    transform: translateX(3px) rotate(1deg);
+  }
+  15% {
+    transform: translateX(-3px) rotate(-1deg);
+  }
+  18% {
+    transform: translateX(3px) rotate(1deg);
+  }
+  21% {
+    transform: translateX(-2px) rotate(-0.5deg);
+  }
+  24% {
+    transform: translateX(2px) rotate(0.5deg);
+  }
+  27% {
+    transform: translateX(-2px) rotate(-0.5deg);
+  }
+  30% {
+    transform: translateX(2px) rotate(0.5deg);
+  }
+  33% {
+    transform: translateX(-1px) rotate(-0.3deg);
+  }
+  36% {
+    transform: translateX(1px) rotate(0.3deg);
+  }
+  39% {
+    transform: translateX(-1px) rotate(-0.3deg);
+  }
+  42% {
+    transform: translateX(0) rotate(0deg);
+  }
+  /* Nghỉ một đoạn */
+  42%, 100% {
+    transform: translateX(0) rotate(0deg);
+  }
+}
+.letter-section {
+  width: 100%;
+  max-width: 500px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  overflow-x: hidden;
+}
+.letter-section .content {
+  aspect-ratio: 500/956;
+  width: 100%;
+  position: relative;
+}
+.letter-section .content img {
+  position: absolute;
+  width: 100%;
+}
+.letter-section .content img.left {
+  max-width: 250px;
+  top: 0;
+  left: 0;
+}
+.letter-section .content img.right {
+  max-width: 250px;
+  top: 0;
+  right: 0;
+  opacity: 1;
+}
+.letter-section .content img.wax {
+  max-width: 100%;
+  top: 45%;
+}
+.letter-section .content .group-name {
+  width: 100%;
+  top: 2%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #73342a;
+}
+.letter-section .content .group-name .invite-text {
+  font-size: 12px;
+  font-family: "SVN-GothamBook", sans-serif;
+  text-transform: uppercase;
+  margin-bottom: 3%;
+  text-align: center;
+}
+.letter-section .content .group-name .guest-name {
+  font-family: "MTDPortrait", sans-serif;
+  font-size: 28px;
+  text-align: center;
+}
+@media (max-width: 500px) {
+  .letter-section .content img.left {
+    max-width: 50vw;
+  }
+  .letter-section .content img.right {
+    max-width: 50vw;
+  }
+  .letter-section .content .group-name .invite-text {
+    font-size: 2.4vw;
+  }
+  .letter-section .content .group-name .guest-name {
+    font-size: 6.4vw;
+  }
+}
+
+.hero {
+  width: 100%;
+}
+.hero .content {
+  aspect-ratio: 500/670;
+  width: 100%;
+  background: url("https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/HaiHa-VanTuan/NVN_7331.webp") no-repeat center/cover;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.our-story {
+  width: 100%;
+}
+.our-story .content {
+  aspect-ratio: 500/710;
+  width: 100%;
+  background: url("../../assets/images/our_story_bg.png") no-repeat center/95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-left: 7%;
+  padding-bottom: 15%;
+}
+.our-story .content .title {
+  font-family: "MTDPortrait", sans-serif;
+  font-size: 40px;
+  margin-bottom: 5%;
+  color: #dba7b2;
+}
+.our-story .content p {
+  font-size: 9.11px;
+  line-height: 2;
+  margin-top: 4%;
+  padding: 0 30%;
+  text-align: justify;
+  text-align-last: center;
+}
+@media (max-width: 500px) {
+  .our-story .content .title {
+    font-size: 8vw;
+  }
+  .our-story .content p {
+    font-size: 1.822vw;
+  }
+}
+
+.invite {
+  width: 100%;
+}
+.invite .content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 5% 0;
+}
+.invite .content .parent-info {
+  text-transform: uppercase;
+}
+.invite .content .parent-info .bold {
+  font-family: "SVN-gothamBold", sans-serif;
+}
+.invite .content .invite-text {
+  margin-top: 5%;
+}
+.invite .content .invite-text .text {
+  line-height: 2;
+  text-transform: uppercase;
+}
+.invite .content .invite-text .couple-name {
+  font-family: "MTDPortrait", sans-serif;
+  font-size: 40px;
+  color: #dba7b2;
+  margin: 5% 0;
+}
+.invite .content .divider-01 {
+  margin: 10%;
+}
+.invite .content .divider-01 img {
+  max-width: 22px;
+}
+.invite .content .location-block-01 .label {
+  text-transform: uppercase;
+  margin-bottom: 3%;
+}
+.invite .content .location-block-01 .label .bold {
+  font-family: "SVN-gothamBold", sans-serif;
+}
+.invite .content .location-block-01 .name {
+  font-family: "SVN-gothamBold", sans-serif;
+  font-size: 15px;
+  color: #dba7b2;
+}
+.invite .content .divider-02 {
+  margin: 10% 0;
+}
+.invite .content .divider-02 img {
+  max-width: 97px;
+}
+.invite .content .location-block-02 .date-time {
+  font-family: "SVN-gothamBold", sans-serif;
+  font-size: 33px;
+  color: #dba7b2;
+  margin-bottom: 10%;
+}
+.invite .content .location-block-02 .location-label {
+  text-transform: uppercase;
+  margin-bottom: 4%;
+}
+.invite .content .location-block-02 .location-name {
+  font-family: "MTDPortrait", sans-serif;
+  font-size: 38px;
+  color: #dba7b2;
+  margin-bottom: 5%;
+}
+.invite .content .btn-wrap {
+  margin-top: 5%;
+  position: relative;
+}
+.invite .content .btn-wrap .map-btn {
+  display: block;
+  text-decoration: none;
+  color: #fff;
+  font-size: 11px;
+  font-family: "SVN-gothamBold", sans-serif;
+  width: 158px;
+  padding: 1% 0;
+  background-color: #dba7b2;
+  border-radius: 15px;
+}
+.invite .content .map-img {
+  margin-top: 10%;
+}
+.invite .content .map-img img {
+  max-width: 384px;
+}
+@media (max-width: 500px) {
+  .invite .content .invite-text .couple-name {
+    font-size: 8vw;
+  }
+  .invite .content .divider-01 img {
+    max-width: 4.4vw;
+  }
+  .invite .content .location-block-01 .name {
+    font-size: 3vw;
+  }
+  .invite .content .divider-02 img {
+    max-width: 19.4vw;
+  }
+  .invite .content .location-block-02 .date-time {
+    font-size: 6.6vw;
+  }
+  .invite .content .location-block-02 .location-name {
+    font-size: 7.6vw;
+  }
+  .invite .content .btn-wrap .map-btn {
+    font-size: 2.2vw;
+    width: 31.6vw;
+    border-radius: 3vw;
+  }
+  .invite .content .map-img img {
+    max-width: 76.8vw;
+  }
+}
+
+.timeline {
+  width: 100%;
+}
+.timeline .content {
+  aspect-ratio: 500/826;
+  background: url("../../assets/images/timeline_bg.png") no-repeat center/85%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  align-items: center;
+}
+.timeline .content .title {
+  font-size: 45px;
+  font-family: "MTDPortrait", sans-serif;
+  color: #dba7b2;
+  margin-top: 22%;
+}
+.timeline .content .timeline-items {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-top: 10%;
+}
+.timeline .content .timeline-items .tl-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 5%;
+}
+.timeline .content .timeline-items .tl-item .icon {
+  max-width: 22px;
+  width: 100%;
+  margin-bottom: 1%;
+}
+.timeline .content .timeline-items .tl-item .icon img {
+  width: 100%;
+  height: auto;
+}
+.timeline .content .timeline-items .tl-item .text-box p {
+  font-family: "SVN-GothamBook", sans-serif;
+  text-transform: uppercase;
+  margin-bottom: 3%;
+  font-size: 9px;
+}
+.timeline .content .timeline-items .tl-item .text-box p.time-and-title span {
+  font-family: "SVN-gothamBold", sans-serif;
+}
+@media (max-width: 500px) {
+  .timeline .content .title {
+    font-size: 9vw;
+  }
+  .timeline .content .timeline-items .tl-item .icon {
+    max-width: 4.4vw;
+  }
+  .timeline .content .timeline-items .tl-item .text-box p {
+    font-size: 1.8vw;
+  }
+}
+
+.dresscode {
+  width: 100%;
+}
+.dresscode .content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.dresscode .content .divider img {
+  max-width: 97px;
+}
+.dresscode .content .title {
+  font-family: "MTDPortrait", sans-serif;
+  font-size: 45px;
+  color: #dba7b2;
+  margin: 5% 0 3%;
+}
+.dresscode .content .subtext {
+  line-height: 2;
+  margin-bottom: 10%;
+}
+.dresscode .content .subtext .bold {
+  font-family: "SVN-gothamBold", sans-serif;
+}
+.dresscode .content .art-01 img {
+  max-width: 235px;
+}
+.dresscode .content .ourstory {
+  margin-top: 15%;
+  padding-bottom: 2%;
+}
+.dresscode .content .ourstory .title {
+  font-family: "MTDPortrait", sans-serif;
+  font-size: 31px;
+  color: #dba7b2;
+  margin-bottom: 5%;
+}
+.dresscode .content .ourstory .art-02 {
+  margin-bottom: 7%;
+}
+.dresscode .content .ourstory .art-02 img {
+  max-width: 197px;
+}
+.dresscode .content .ourstory .text {
+  padding: 0 14%;
+}
+.dresscode .content .ourstory .text p {
+  margin-bottom: 5%;
+  line-height: 2;
+  text-align: justify;
+  text-align-last: center;
+}
+@media (max-width: 500px) {
+  .dresscode .content .divider img {
+    max-width: 19.4vw;
+  }
+  .dresscode .content .title {
+    font-size: 9vw;
+  }
+  .dresscode .content .art-01 img {
+    max-width: 47vw;
+  }
+  .dresscode .content .ourstory .title {
+    font-size: 6.2vw;
+  }
+  .dresscode .content .ourstory .art-02 img {
+    max-width: 39.4vw;
+  }
+}
+
+.album {
+  width: 100%;
+}
+.album .content {
+  width: 100%;
+}
+.album .content h2 {
+  font-family: "MTDPortrait", sans-serif;
+  font-size: 45px;
+  font-weight: 300;
+  color: #dba7b2;
+  margin: 10% 0 7%;
+}
+.album .content .swiper {
+  width: 100%;
+  aspect-ratio: 500/752;
+  margin: 0 auto;
+  padding-bottom: 10%;
+}
+.album .content .swiper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.album .content .swiper .swiper-button-next,
+.album .content .swiper .swiper-button-prev {
+  color: white;
+}
+.album .content .swiper .swiper-pagination-bullet-active {
+  background: #34393d;
+}
+.album .content .swiper .swiper-pagination-bullet {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+}
+@media (max-width: 500px) {
+  .album .content h2 {
+    font-size: 9vw;
+  }
+  .album .content .swiper .swiper-button-next:after,
+  .album .content .swiper .swiper-button-prev:after {
+    font-size: 8.8vw;
+  }
+  .album .content .swiper .swiper-pagination-bullet {
+    width: 3.2vw;
+    height: 3.2vw;
+  }
+}
+
+.swiper {
+  margin: 0 auto;
+  padding: 0 0 10% !important;
+}
+
+.rsvp {
+  width: 100%;
+}
+.rsvp .content {
+  aspect-ratio: 500/744;
+  background: url("../../assets/images/rsvp_bg.png") no-repeat center/90%;
+  width: 100%;
+  font-family: "SVN-GothamBook", sans-serif;
+  padding-top: 30%;
+  position: relative;
+}
+.rsvp .content .flower {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  max-width: 111px;
+}
+.rsvp .content .header {
+  padding: 5% 18%;
+}
+.rsvp .content .header .title {
+  font-size: 38px;
+  font-weight: 300;
+  font-family: "MTDPortrait", sans-serif;
+  color: #dba7b2;
+  margin-bottom: 10%;
+}
+.rsvp .content .header .subtext {
+  line-height: 2;
+  text-align: justify;
+  text-align-last: center;
+}
+.rsvp .content .header hr {
+  border-top: 2px dashed #fde5ea;
+  margin: 8% 0;
+}
+.rsvp .content .rsvp-form {
+  display: block;
+  padding: 5% 14%;
+}
+.rsvp .content .rsvp-form .button-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6%;
+}
+.rsvp .content .rsvp-form .button-group .radio-wrapper {
+  position: relative;
+}
+.rsvp .content .rsvp-form .button-group .radio-wrapper input[type=radio] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+.rsvp .content .rsvp-form .button-group .radio-label {
+  display: block;
+  padding: 4%;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  border: 1px solid #fde5ea;
+  aspect-ratio: 192/42;
+}
+.rsvp .content .rsvp-form .button-group .radio-label:hover {
+  background: #dba7b2;
+}
+.rsvp .content .rsvp-form .button-group .radio-wrapper input[type=radio]:checked + .radio-label {
+  background: #fde5ea;
+  color: rgb(9, 33, 2);
+}
+.rsvp .content .rsvp-form .form-group {
+  margin-bottom: 3%;
+}
+.rsvp .content .rsvp-form .form-group input[type=text],
+.rsvp .content .rsvp-form .form-group input[type=number],
+.rsvp .content .rsvp-form .form-group textarea {
+  font-family: "SVN-GothamBook", sans-serif;
+  width: 100%;
+  padding: 2% 4%;
+  border-radius: 8px;
+  background: transparent;
+  font-size: 10px;
+  color: #333;
+  outline: none;
+  border: 1px solid #fde5ea;
+  transition: border-color 0.3s ease;
+}
+.rsvp .content .rsvp-form .form-group input[type=text]:focus,
+.rsvp .content .rsvp-form .form-group input[type=number]:focus,
+.rsvp .content .rsvp-form .form-group textarea:focus {
+  outline: none;
+}
+.rsvp .content .rsvp-form .form-group textarea {
+  aspect-ratio: 500/100;
+  resize: vertical;
+  font-family: inherit;
+}
+.rsvp .content .rsvp-form .form-group textarea::placeholder {
+  white-space: pre-line;
+  /* Cho phép hiển thị xuống dòng trong placeholder */
+}
+.rsvp .content .rsvp-form .form-group.guest-number {
+  display: flex;
+  justify-content: space-between;
+}
+.rsvp .content .rsvp-form .form-group.dietary {
+  margin: 8% 0 10%;
+}
+.rsvp .content .rsvp-form .form-group.dietary p {
+  margin-bottom: 3%;
+}
+.rsvp .content .rsvp-form .form-group.dietary p.subtitle {
+  margin-bottom: 3%;
+}
+.rsvp .content .rsvp-form .form-group.other {
+  margin-bottom: 8%;
+}
+.rsvp .content .rsvp-form .form-group.guest-info {
+  margin-bottom: 2%;
+}
+.rsvp .content .rsvp-form .form-group.guest-info .dietary-label {
+  margin-bottom: 2%;
+}
+.rsvp .content .rsvp-form .form-group.guest-info .subtitle {
+  margin-bottom: 3%;
+}
+.rsvp .content .rsvp-form .message {
+  text-align: center;
+  margin: 10% 0 4%;
+}
+.rsvp .content .rsvp-form .message p {
+  margin-bottom: 2%;
+}
+.rsvp .content .rsvp-form .submit-btn {
+  width: 39%;
+  padding: 3% 0;
+  background: #c9818e;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 9.11px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: background 0.3s ease;
+  margin: 10% 0;
+}
+.rsvp .content .rsvp-form .submit-btn:hover {
+  background: #c9818e;
+  opacity: 0.9;
+}
+.rsvp .content .rsvp-form .submit-btn:active {
+  transform: scale(0.98);
+}
+.rsvp label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "SVN-GothamBook", sans-serif;
+  margin-bottom: 2%;
+  text-transform: uppercase;
+  font-size: 9.11px;
+}
+@media (max-width: 500px) {
+  .rsvp .content .flower {
+    max-width: 22.2vw;
+  }
+  .rsvp .content .header .title {
+    font-size: 7.6vw;
+  }
+  .rsvp .content .header hr {
+    border-top: 0.4vw dashed #fde5ea;
+  }
+  .rsvp .content .rsvp-form .button-group .radio-label {
+    border-radius: 1.6vw;
+    border: 0.2vw solid #fde5ea;
+  }
+  .rsvp .content .rsvp-form .form-group input[type=text],
+  .rsvp .content .rsvp-form .form-group input[type=number],
+  .rsvp .content .rsvp-form .form-group textarea {
+    font-size: 2vw;
+    border-radius: 1.6vw;
+    border: 0.2vw solid #fde5ea;
+  }
+  .rsvp .content .rsvp-form .form-group textarea {
+    /* keep aspect-ratio unchanged */
+  }
+  .rsvp .content .rsvp-form .submit-btn {
+    font-size: 1.822vw;
+    border-radius: 1.6vw;
+    letter-spacing: 0.2vw;
+  }
+  .rsvp label {
+    font-size: 1.822vw;
+  }
+}
+
+.travel-guide {
+  width: 100%;
+}
+.travel-guide .content {
+  width: 100%;
+  aspect-ratio: 500/700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.travel-guide .content .divider img {
+  max-width: 71px;
+}
+.travel-guide .content .title {
+  font-family: "MTDPortrait", sans-serif;
+  color: #dba7b2;
+  font-size: 43px;
+  margin: 5% 0 8%;
+}
+.travel-guide .content .guide {
+  width: 85%;
+  color: rgb(9, 33, 2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.travel-guide .content .guide .faq-container {
+  width: 100%;
+}
+.travel-guide .content .guide .faq-container .faq-item {
+  border-radius: 8px;
+  overflow: hidden;
+}
+.travel-guide .content .guide .faq-container .faq-item .faq-header {
+  width: 100%;
+  background: transparent;
+  font-family: "SVN-gothamBold", sans-serif;
+  color: rgb(9, 33, 2);
+  padding: 2% 0% 1%;
+  margin-bottom: 2%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  cursor: pointer;
+  border: none;
+  text-transform: uppercase;
+  border-bottom: 2px solid rgb(9, 33, 2);
+}
+.travel-guide .content .guide .faq-container .faq-item .faq-header .icon {
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1;
+}
+.travel-guide .content .guide .faq-container .faq-item .faq-content {
+  color: rgb(9, 33, 2);
+  height: 0;
+  overflow: hidden;
+}
+.travel-guide .content .guide .faq-container .faq-item .faq-content a {
+  text-decoration: none;
+  color: rgb(9, 33, 2);
+  display: block;
+  text-align: center;
+  padding: 3% 0 0;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+@media (max-width: 500px) {
+  .travel-guide .content .divider img {
+    max-width: 14.2vw;
+  }
+  .travel-guide .content .title {
+    font-size: 8.6vw;
+  }
+  .travel-guide .content .guide .faq-container .faq-item .faq-header {
+    font-size: 2vw;
+  }
+  .travel-guide .content .guide .faq-container .faq-item .faq-header .icon {
+    font-size: 4vw;
+  }
+  .travel-guide .content .guide .faq-container .faq-item .faq-content a {
+    font-size: 2vw;
+  }
+}
+
+.end {
+  width: 100%;
+}
+.end .content {
+  aspect-ratio: 500/750;
+  width: 100%;
+  background: url("../../assets/images/end_bg.png") no-repeat center/cover;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 10%;
+}
+.end .content .text-block {
+  max-width: 338px;
+  width: 100%;
+  aspect-ratio: 338/397;
+  background: url("../../assets/images/paper.png") no-repeat center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10% 8% 0;
+}
+.end .content .text-block p {
+  line-height: 2;
+  margin-bottom: 10%;
+  margin-left: 4%;
+  text-align: justify;
+  text-align-last: center;
+  color: #4d4b4c;
+}
+@media (max-width: 500px) {
+  .end .content .text-block {
+    max-width: 67.6vw;
+  }
+}
+.end .content .countdown {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 5%;
+}
+.end .content .countdown .divider img {
+  width: 32px;
+  height: auto;
+  margin-bottom: 5%;
+}
+.end .content .countdown .title {
+  font-size: 45px;
+  font-family: "MTDPortrait", sans-serif;
+  line-height: 1;
+  margin-bottom: 1%;
+  color: rgb(9, 33, 2);
+}
+.end .content .countdown .sub_text {
+  margin: 5% 0 5%;
+  letter-spacing: 1.4px;
+  font-family: "SVN-GothamBook", sans-serif;
+  color: rgb(9, 33, 2);
+  font-size: 12px;
+}
+.end .content .countdown .countdown-box {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+  width: 85%;
+  gap: 3%;
+}
+.end .content .countdown .countdown-box .time-box {
+  text-align: center;
+  flex: 1;
+  background: rgba(253, 229, 234, 0.5);
+  border: 1px solid rgb(201, 129, 142);
+  backdrop-filter: blur(1px);
+  color: rgb(201, 135, 150);
+  padding: 2% 0;
+  border-radius: 10px;
+  position: relative;
+}
+.end .content .countdown .countdown-box .time-box .number {
+  font-size: 32px;
+  font-weight: 100;
+  line-height: 1;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  z-index: 1;
+  position: relative;
+}
+.end .content .countdown .countdown-box .time-box .label {
+  font-size: 10.5px;
+  letter-spacing: 1px;
+  font-weight: 500;
+  z-index: 1;
+  position: relative;
+}
+.end .content .countdown .invite_text {
+  margin: 25% 0 8%;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: 2px;
+}
+.end .content .countdown .cake_img img {
+  max-width: 78px;
+}
+@media (max-width: 500px) {
+  .end .content .countdown .divider img {
+    width: 6.4vw;
+  }
+  .end .content .countdown .title {
+    font-size: 9vw;
+  }
+  .end .content .countdown .sub_text {
+    font-size: 2.4vw;
+  }
+  .end .content .countdown .countdown-box .time-box .number {
+    font-size: 6.4vw;
+  }
+  .end .content .countdown .countdown-box .time-box .label {
+    font-size: 2.1vw;
+    letter-spacing: 0.2vw;
+  }
+  .end .content .countdown .invite_text {
+    font-size: 4.8vw;
+    letter-spacing: 0.4vw;
+  }
+  .end .content .countdown .cake_img img {
+    max-width: 15.6vw;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

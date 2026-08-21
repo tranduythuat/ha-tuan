@@ -1,0 +1,173 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.invite {
+    width: 100%;
+
+    .content {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        padding: 5% 0;
+
+        .parent-info {
+            text-transform: uppercase;
+
+            .bold {
+                font-family: $font-gothamBold;
+            }
+        }
+
+        .invite-text {
+            margin-top: 5%;
+
+            .text {
+                line-height: 2;
+                text-transform: uppercase;
+            }
+
+            .couple-name {
+                font-family: $font-MTDPortrait;
+                font-size: 40px;
+                color: $title-color;
+                margin: 5% 0;
+            }
+        }
+
+        .divider-01 {
+            margin: 10%;
+
+            img {
+                max-width: 22px;
+            }
+        }
+
+        .location-block-01 {
+            .label {
+                text-transform: uppercase;
+                margin-bottom: 3%;
+
+                .bold {
+                    font-family: $font-gothamBold;
+                }
+            }
+
+            .name {
+                font-family: $font-gothamBold;
+                font-size: 15px;
+                color: $title-color;
+            }
+        }
+
+        .divider-02 {
+            margin: 10% 0;
+
+            img {
+                max-width: 97px;
+            }
+        }
+
+        .location-block-02 {
+            .time-label {}
+
+            .date-time {
+                font-family: $font-gothamBold;
+                font-size: 33px;
+                color: $title-color;
+                margin-bottom: 10%;
+            }
+
+            .location-label {
+                text-transform: uppercase;
+                margin-bottom: 4%;
+            }
+
+            .location-name {
+                font-family: $font-MTDPortrait;
+                font-size: 38px;
+                color: $title-color;
+                margin-bottom: 5%;
+            }
+        }
+
+
+        .btn-wrap {
+            margin-top: 5%;
+            position: relative;
+
+            .map-btn {
+                display: block;
+                text-decoration: none;
+                color: #fff;
+                font-size: 11px;
+                font-family: $font-gothamBold;
+                width: 158px;
+                padding: 1% 0;
+                background-color: $title-color;
+                border-radius: 15px;
+            }
+        }
+
+        .map-img {
+            margin-top: 10%;
+
+            img {
+                max-width: 384px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .invite-text {
+                .couple-name {
+                    font-size: calc((40 / 500) * 100vw);
+                }
+            }
+
+            .divider-01 {
+                img {
+                    max-width: calc((22 / 500) * 100vw);
+                }
+            }
+
+            .location-block-01 {
+                .name {
+                    font-size: calc((15 / 500) * 100vw);
+                }
+            }
+
+            .divider-02 {
+                img {
+                    max-width: calc((97 / 500) * 100vw);
+                }
+            }
+
+            .location-block-02 {
+                .date-time {
+                    font-size: calc((33 / 500) * 100vw);
+                }
+
+                .location-name {
+                    font-size: calc((38 / 500) * 100vw);
+                }
+            }
+
+
+            .btn-wrap {
+                .map-btn {
+                    font-size: calc((11 / 500) * 100vw);
+                    width: calc((158 / 500) * 100vw);
+                    border-radius: calc((15 / 500) * 100vw);
+                }
+            }
+
+            .map-img {
+                img {
+                    max-width: calc((384 / 500) * 100vw);
+                }
+            }
+        }
+    }
+}

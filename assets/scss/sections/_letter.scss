@@ -1,0 +1,89 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.letter-section {
+    width: 100%;
+    max-width: 500px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    overflow-x: hidden;
+
+    .content {
+        aspect-ratio: 500 / 956;
+        width: 100%;
+        position: relative;
+
+        img {
+            position: absolute;
+            width: 100%;
+
+            &.left {
+                max-width: 250px;
+                top: 0;
+                left: 0;
+            }
+
+            &.right {
+                max-width: 250px;
+                top: 0;
+                right: 0;
+                opacity: 1;
+            }
+
+            &.wax {
+                max-width: 100%;
+                top: 45%;
+            }
+        }
+
+        .group-name {
+            width: 100%;
+            top: 2%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #73342a;
+
+            .invite-text {
+                font-size: 12px;
+                font-family: $font-gotham;
+                text-transform: uppercase;
+                margin-bottom: 3%;
+                text-align: center;
+            }
+
+            .guest-name {
+                font-family: $font-MTDPortrait;
+                font-size: 28px;
+                text-align: center;
+            }
+        }
+    }
+
+    @media (max-width: 500px) {
+        .content {
+            img {
+                &.left {
+                    max-width: calc((250 / 500) * 100vw);
+                }
+
+                &.right {
+                    max-width: calc((250 / 500) * 100vw);
+                }
+            }
+
+            .group-name {
+                .invite-text {
+                    font-size: calc((12 / 500) * 100vw);
+                }
+
+                .guest-name {
+                    font-size: calc((32 / 500) * 100vw);
+                }
+            }
+        }
+    }
+}
