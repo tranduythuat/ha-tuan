@@ -11,7 +11,7 @@
 
         .divider {
             img {
-                max-width: 97px;
+                max-width: 167px;
             }
         }
 
@@ -71,7 +71,7 @@
         @media (max-width: 500px) {
             .divider {
                 img {
-                    max-width: calc((97 / 500) * 100vw);
+                    max-width: calc((167 / 500) * 100vw);
                 }
             }
 

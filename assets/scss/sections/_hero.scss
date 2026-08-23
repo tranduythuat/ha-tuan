@@ -5,11 +5,39 @@
     width: 100%;
 
     .content {
-        aspect-ratio: 500 / 670;
+        aspect-ratio: 500 / 751;
         width: 100%;
-        background: url('https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/HaiHa-VanTuan/NVN_7331.webp') no-repeat center / cover;
+        background: url('../../assets/images/hero_bg.png') no-repeat center / 98%;
         display: flex;
-        justify-content: space-between;
+        justify-content: start;
         align-items: center;
+        flex-direction: column;
+        color: $secondary-color;
+        padding-top: 28%;
+        position: relative;
+
+        .savethedate,
+        .date {
+            font-size: 12.3px;
+            text-transform: uppercase;
+            font-family: $font-gothamLight;
+        }
+
+        .couple-name {
+            font-family: $font-MTDPortrait;
+            font-size: 31px;
+            margin: 5% 0;
+        }
+
+        .hero-img {
+            position: absolute;
+            bottom: 15%;
+
+            img {
+                max-width: 440px;
+            }
+        }
+
+        @media (max-width: 500px) {}
     }
 }

@@ -16,7 +16,7 @@
             position: absolute;
             bottom: 0;
             right: 0;
-            max-width: 111px;
+            max-width: 164px;
         }
 
         .header {
@@ -76,7 +76,7 @@
                     aspect-ratio: 192 / 42;
 
                     &:hover {
-                        background: $title-color;
+                        background: #c1bfa7ff;
                     }
                 }
 
@@ -169,7 +169,7 @@
             .submit-btn {
                 width: 39%;
                 padding: 3% 0;
-                background: $primary-color;
+                background: $secondary-color;
                 color: white;
                 border: none;
                 border-radius: 8px;
@@ -183,8 +183,8 @@
             }
 
             .submit-btn:hover {
-                background: $primary-color;
-                opacity: 0.9;
+                background: rgb(102, 99, 71);
+                // opacity: 0.9;
             }
 
             .submit-btn:active {
@@ -207,7 +207,7 @@
     @media (max-width: 500px) {
         .content {
             .flower {
-                max-width: calc((111 / 500) * 100vw);
+                max-width: calc((164 / 500) * 100vw);
             }
 
             .header {
