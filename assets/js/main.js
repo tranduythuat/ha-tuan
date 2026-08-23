@@ -866,9 +866,6 @@
       "flip": gsapFlipIn,
       "flip-yoyo": gsapFlipInThenYoyo,
 
-      "zoom-in": gsapZoomIn,
-      "zoom-out": gsapZoomOut,
-
       "fade-in": gsapFadeIn,
       "fade-in-end": gsapFadeInForEnd,
       "fade-in-yoyo": gsapFadeInThenYoyo,
