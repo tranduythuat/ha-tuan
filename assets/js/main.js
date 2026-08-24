@@ -924,7 +924,7 @@
     initTimeline();
     initFAQ();
     initRSVP();
-    startCountdown(new Date("2026-09-19T11:00:00"));
+    // startCountdown(new Date("2026-09-19T11:00:00"));
   }
 
   document.addEventListener("DOMContentLoaded", init);
