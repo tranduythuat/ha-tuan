@@ -32,10 +32,13 @@
         }
 
         .hero-img {
-            position: absolute;
-            bottom: 15%;
+            width: 100%;
 
             img {
+                position: absolute;
+                bottom: 15%;
+                left: 50%;
+                transform: translateX(-50%);
                 max-width: 440px;
             }
         }

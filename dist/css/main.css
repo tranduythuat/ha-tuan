@@ -367,10 +367,13 @@ section {
   margin: 5% 0;
 }
 .hero .content .hero-img {
-  position: absolute;
-  bottom: 15%;
+  width: 100%;
 }
 .hero .content .hero-img img {
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
   max-width: 440px;
 }
 @media (max-width: 500px) {
