@@ -344,13 +344,13 @@ section {
 .hero .content {
   aspect-ratio: 500/751;
   width: 100%;
-  background: url("../../assets/images/hero_bg.png") no-repeat center/98%;
+  background: url("../../assets/images/couple/IMG_6103.JPG") no-repeat center/100%;
   display: flex;
   justify-content: start;
   align-items: center;
   flex-direction: column;
   color: #918e5b;
-  padding-top: 28%;
+  padding-top: 12%;
   position: relative;
 }
 .hero .content .savethedate,
@@ -363,8 +363,7 @@ section {
 }
 .hero .content .couple-name {
   font-family: "MTDPortrait", sans-serif;
-  font-size: 31px;
-  margin: 5% 0;
+  font-size: 38px;
 }
 .hero .content .hero-img {
   width: 100%;
@@ -383,7 +382,7 @@ section {
     letter-spacing: 0.4vw;
   }
   .hero .content .couple-name {
-    font-size: 6.2vw;
+    font-size: 7.6vw;
   }
   .hero .content .hero-img img {
     max-width: 88vw;
@@ -496,7 +495,8 @@ section {
   font-family: "MTDPortrait", sans-serif;
   font-size: 38px;
   color: #918e5b;
-  margin-bottom: 5%;
+  padding: 2% 0 7%;
+  line-height: 1.7;
 }
 .invite .content .btn-wrap {
   margin-top: 5%;
@@ -659,6 +659,7 @@ section {
 }
 .dresscode .content .ourstory .text {
   padding: 0 14%;
+  text-transform: uppercase;
 }
 .dresscode .content .ourstory .text p {
   margin-bottom: 5%;

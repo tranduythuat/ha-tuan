@@ -7,13 +7,13 @@
     .content {
         aspect-ratio: 500 / 751;
         width: 100%;
-        background: url('../../assets/images/hero_bg.png') no-repeat center / 98%;
+        background: url('../../assets/images/couple/IMG_6103.JPG') no-repeat center / 100%;
         display: flex;
         justify-content: start;
         align-items: center;
         flex-direction: column;
         color: $secondary-color;
-        padding-top: 28%;
+        padding-top: 12%;
         position: relative;
 
         .savethedate,
@@ -27,8 +27,7 @@
 
         .couple-name {
             font-family: $font-MTDPortrait;
-            font-size: 31px;
-            margin: 5% 0;
+            font-size: 38px;
         }
 
         .hero-img {
@@ -52,7 +51,7 @@
             }
 
             .couple-name {
-                font-size: calc((31 / 500) * 100vw);
+                font-size: calc((38 / 500) * 100vw);
             }
 
             .hero-img {
