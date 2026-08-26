@@ -730,23 +730,15 @@
     };
   }
 
-  async function handleFormSubmit(e, lang = "vi") {
+  async function handleFormSubmit(e, code = "", lang = "vi") {
     e.preventDefault();
-    const form = document.forms["rsvpForm"];
+    const form = e.target;
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
 
-    // form.addEventListener("submit", (e) => {
-    //   e.preventDefault();
-
-    //   const data = new FormData(form);
-    //   console.log(Object.fromEntries(data));
-    // });
     if (!form) {
       return;
     }
-
-    // const form = e.target;
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
 
     const {
       name,
@@ -799,7 +791,12 @@
       didOpen: () => Swal.showLoading(),
     });
 
-    const sheetURL = "?sheet=confirm";
+    const SHEET_ENDPOINTS = {
+      nha_gai: "https://script.google.com/macros/s/AKfycbxiyFwJ9A_HhpIPyBQdiauUyK-b_NIkD5zE69mZVGcJRxqj5dssTl8_yRKIVutO0APl/exec?sheet=nha-gai",
+      nha_trai: "https://script.google.com/macros/s/AKfycbxiyFwJ9A_HhpIPyBQdiauUyK-b_NIkD5zE69mZVGcJRxqj5dssTl8_yRKIVutO0APl/exec?sheet=nha-trai",
+    };
+
+    let sheetURL = SHEET_ENDPOINTS[code] || SHEET_ENDPOINTS['nha_gai'];
 
     try {
       const res = await fetch(sheetURL, {
@@ -854,10 +851,16 @@
   }
 
   function initRSVP() {
-    const form = document.forms["rsvpForm"];
-    if (form) {
-      bindRSVPFieldEvents(form);
-      form.addEventListener("submit", (e) => handleFormSubmit(e, "vi"));
+    const formNhaTrai = document.forms["rsvpForm-nhatrai"];
+    if (formNhaTrai) {
+      // bindRSVPFieldEvents(form);
+      formNhaTrai.addEventListener("submit", (e) => handleFormSubmit(e, "nha_trai", "vi"));
+    }
+
+    const formNhaGai = document.forms["rsvpForm-nhagai"];
+    if (formNhaGai) {
+      // bindRSVPFieldEvents(form);
+      formNhaGai.addEventListener("submit", (e) => handleFormSubmit(e, "nha_gai", "vi"));
     }
   }
 

@@ -342,7 +342,7 @@ section {
   width: 100%;
 }
 .hero .content {
-  aspect-ratio: 500/751;
+  aspect-ratio: 500/797;
   width: 100%;
   background: url("../../assets/images/couple/IMG_6103.JPG") no-repeat center/100%;
   display: flex;
@@ -350,7 +350,7 @@ section {
   align-items: center;
   flex-direction: column;
   color: #918e5b;
-  padding-top: 12%;
+  padding-top: 16%;
   position: relative;
 }
 .hero .content .savethedate,
