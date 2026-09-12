@@ -527,6 +527,16 @@
       src="https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/music/Ed%20Sheeran%20-%20Thinking%20Out%20Loud%20(Official%20Music%20Video)%20(mp3cut.net).mp3"
       loop type="audio/mpeg"></audio>
   </div>
+  <script>
+    const allowed = false;
+
+    if (!allowed) {
+      document.body.innerHTML = `
+              <h2>Bạn không có quyền truy cập trang này.</h2>
+          `;
+      throw new Error("Access denied");
+    }
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
